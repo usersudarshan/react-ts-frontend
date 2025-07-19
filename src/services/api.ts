@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const baseURL = process.env.REACT_APP_API_URL;
+
 export const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL,
   withCredentials: true, // Important for cookies and sessions
   headers: {
     "Content-Type": "application/json",
