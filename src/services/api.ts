@@ -6,11 +6,13 @@ console.log(`baseURL: ${baseURL}`);
 
 export const api = axios.create({
   baseURL: "https://user-movie-node-backend.onrender.com",
-  withCredentials: true, // Important for cookies and sessions
+  withCredentials: false, // Important for cookies and sessions
   headers: {
     "Content-Type": "application/json",
   },
 });
+
+
 
 export const setAuthToken = (token?: string) => {
   if (token) {
