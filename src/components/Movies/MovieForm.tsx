@@ -9,6 +9,8 @@ const MovieForm: React.FC = () => {
     director: "",
     year: "",
     rating: "",
+    image: "",
+    cast: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +31,9 @@ const MovieForm: React.FC = () => {
         description: form.description,
         director: form.director,
         year: parseInt(form.year, 10),
-        rating: form.rating, // keep as string like "PG-13", "R", etc.
+        rating: form.rating,
+        image: form.image,
+        cast: form.cast.split(",").map((c) => c.trim()),
       };
       await createMovie(movie);
       alert("Movie created");
@@ -89,6 +93,24 @@ const MovieForm: React.FC = () => {
         label="Rating"
         name="rating"
         value={form.rating}
+        onChange={handleChange}
+        margin="normal"
+        required
+      />
+      <TextField
+        fullWidth
+        label="Image URL"
+        name="image"
+        value={form.image}
+        onChange={handleChange}
+        margin="normal"
+        required
+      />
+      <TextField
+        fullWidth
+        label="Cast (comma-separated)"
+        name="cast"
+        value={form.cast}
         onChange={handleChange}
         margin="normal"
         required
